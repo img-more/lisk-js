@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/transactions/crypto/sign.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/transactions/crypto</a> sign.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.33% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>4/75</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.33% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>4/75</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ * Copyright © 2017 Lisk Foundation
+ *
+ * See the LICENSE file at the top-level directory of this distribution
+ * for licensing information.
+ *
+ * Unless otherwise agreed in a custom licensing agreement with the Lisk Foundation,
+ * no part of this software, including this file, may be copied, modified,
+ * propagated, or distributed except according to the terms contained in the
+ * LICENSE file.
+ *
+ * Removal or modification of this copyright notice is prohibited.
+ *
+ */
+import ed2curve from 'ed2curve';
+import convert from './convert';
+import keys from './keys';
+&nbsp;
+function signMessageWithSecret(message, secret) {
+	c</span>onst msgBytes = <span class="cstat-no" title="statement not covered" >naclInstance.encode_utf8(message);
+	c</span>onst keypairBytes = <span class="cstat-no" title="statement not covered" >keys.getRawPrivateAndPublicKeyFromSecret(secret);
+&nbsp;
+	c</span>onst signedMessage = <span class="cstat-no" title="statement not covered" >naclInstance.crypto_sign(msgBytes, keypairBytes.privateKey);
+	c</span>onst hexSignedMessage = <span class="cstat-no" title="statement not covered" >convert.bufferToHex(signedMessage);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return hexSignedMessage;</span>
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >signMessageWithTwoSecrets(message, secret, secondSecret) {
+	c</span>onst msgBytes = <span class="cstat-no" title="statement not covered" >naclInstance.encode_utf8(message);
+	c</span>onst keypairBytes = <span class="cstat-no" title="statement not covered" >keys.getRawPrivateAndPublicKeyFromSecret(secret);
+	c</span>onst secondKeypairBytes = <span class="cstat-no" title="statement not covered" >keys.getRawPrivateAndPublicKeyFromSecret(secondSecret);
+&nbsp;
+	c</span>onst signedMessage = <span class="cstat-no" title="statement not covered" >naclInstance.crypto_sign(msgBytes, keypairBytes.privateKey);
+	c</span>onst doubleSignedMessage = <span class="cstat-no" title="statement not covered" >naclInstance
+		.crypto_sign(signedMessage, secondKeypairBytes.privateKey);
+&nbsp;
+	c</span>onst hexSignedMessage = <span class="cstat-no" title="statement not covered" >convert.bufferToHex(doubleSignedMessage);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return hexSignedMessage;</span>
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >verifyMessageWithTwoPublicKeys(signedMessage, publicKey, secondPublicKey) {
+	c</span>onst signedMessageBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(signedMessage);
+	c</span>onst publicKeyBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(publicKey);
+	c</span>onst secondPublicKeyBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(secondPublicKey);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (publicKeyBytes.length !== 32) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new Error('Invalid first publicKey, expected 32-byte publicKey');</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (secondPublicKeyBytes.length !== 32) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new Error('Invalid second publicKey, expected 32-byte publicKey');</span>
+	}
+&nbsp;
+	// Give appropriate error messages from crypto_sign_open
+	c</span>onst openSignature = <span class="cstat-no" title="statement not covered" >naclInstance.crypto_sign_open(signedMessageBytes, secondPublicKeyBytes);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (openSignature) {</span>
+		c</span>onst openSecondSignature = <span class="cstat-no" title="statement not covered" >naclInstance.crypto_sign_open(openSignature, publicKeyBytes);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		if (openSecondSignature) {</span>
+			// Returns original message
+<span class="cstat-no" title="statement not covered" >			return naclInstance.decode_utf8(openSecondSignature);</span>
+		}
+<span class="cstat-no" title="statement not covered" >		throw new Error('Invalid signature second publicKey, cannot verify message');</span>
+	} else {
+<span class="cstat-no" title="statement not covered" >		throw new Error('Invalid signature primary publicKey, cannot verify message');</span>
+	}
+}
+&nbsp;
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >signAndPrintMessage(message, secret) {
+	c</span>onst signedMessageHeader = <span class="cstat-no" title="statement not covered" >'-----BEGIN LISK SIGNED MESSAGE-----';
+	c</span>onst messageHeader = <span class="cstat-no" title="statement not covered" >'-----MESSAGE-----';
+	c</span>onst plainMessage = <span class="cstat-no" title="statement not covered" >message;
+	c</span>onst pubklicKeyHeader = <span class="cstat-no" title="statement not covered" >'-----PUBLIC KEY-----';
+	c</span>onst publicKey = <span class="cstat-no" title="statement not covered" >keys.getPrivateAndPublicKeyFromSecret(secret).publicKey;
+	c</span>onst signatureHeader = <span class="cstat-no" title="statement not covered" >'-----SIGNATURE-----';
+	c</span>onst signedMessage = <span class="cstat-no" title="statement not covered" >signMessageWithSecret(message, secret);
+	c</span>onst signatureFooter = <span class="cstat-no" title="statement not covered" >'-----END LISK SIGNED MESSAGE-----';
+&nbsp;
+	c</span>onst outputArray = <span class="cstat-no" title="statement not covered" >[
+		signedMessageHeader,
+		messageHeader,
+		plainMessage,
+		pubklicKeyHeader,
+		publicKey,
+		signatureHeader,
+		signedMessage,
+		signatureFooter,
+	];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return outputArray.join('\n');</span>
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >printSignedMessage(message, signedMessage, publicKey) {
+	c</span>onst signedMessageHeader = <span class="cstat-no" title="statement not covered" >'-----BEGIN LISK SIGNED MESSAGE-----';
+	c</span>onst messageHeader = <span class="cstat-no" title="statement not covered" >'-----MESSAGE-----';
+	c</span>onst publicKeyHeader = <span class="cstat-no" title="statement not covered" >'-----PUBLIC KEY-----';
+	c</span>onst signatureHeader = <span class="cstat-no" title="statement not covered" >'-----SIGNATURE-----';
+	c</span>onst signatureFooter = <span class="cstat-no" title="statement not covered" >'-----END LISK SIGNED MESSAGE-----';
+&nbsp;
+	c</span>onst outputArray = <span class="cstat-no" title="statement not covered" >[
+		signedMessageHeader,
+		messageHeader,
+		message,
+		publicKeyHeader,
+		publicKey,
+		signatureHeader,
+		signedMessage,
+		signatureFooter,
+	];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return outputArray.join('\n');</span>
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >verifyMessageWithPublicKey(signedMessage, publicKey) {
+	c</span>onst signedMessageBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(signedMessage);
+	c</span>onst publicKeyBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(publicKey);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (publicKeyBytes.length !== 32) {</span>
+<span class="cstat-no" title="statement not covered" >		throw new Error('Invalid publicKey, expected 32-byte publicKey');</span>
+	}
+&nbsp;
+	// Give appropriate error messages from crypto_sign_open
+	c</span>onst openSignature = <span class="cstat-no" title="statement not covered" >naclInstance.crypto_sign_open(signedMessageBytes, publicKeyBytes);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if (openSignature) {</span>
+		// Returns original message
+<span class="cstat-no" title="statement not covered" >		return naclInstance.decode_utf8(openSignature);</span>
+	}
+<span class="cstat-no" title="statement not covered" >	throw new Error('Invalid signature publicKey combination, cannot verify message');</span>
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >convertPublicKeyEd2Curve(publicKey) {
+<span class="cstat-no" title="statement not covered" >	return ed2curve.convertPublicKey(publicKey);</span>
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >convertPrivateKeyEd2Curve(privateKey) {
+<span class="cstat-no" title="statement not covered" >	return ed2curve.convertSecretKey(privateKey);</span>
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >encryptMessageWithSecret(message, secret, recipientPublicKey) {
+	c</span>onst senderPrivateKey = <span class="cstat-no" title="statement not covered" >keys.getRawPrivateAndPublicKeyFromSecret(secret).privateKey;
+	c</span>onst convertedPrivateKey = <span class="cstat-no" title="statement not covered" >convertPrivateKeyEd2Curve(senderPrivateKey);
+	c</span>onst recipientPublicKeyBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(recipientPublicKey);
+	c</span>onst convertedPublicKey = <span class="cstat-no" title="statement not covered" >convertPublicKeyEd2Curve(recipientPublicKeyBytes);
+	c</span>onst utf8Message = <span class="cstat-no" title="statement not covered" >naclInstance.encode_utf8(message);
+&nbsp;
+	c</span>onst nonce = <span class="cstat-no" title="statement not covered" >naclInstance.crypto_box_random_nonce();
+	c</span>onst packet = <span class="cstat-no" title="statement not covered" >naclInstance
+		.crypto_box(utf8Message, nonce, convertedPublicKey, convertedPrivateKey);
+&nbsp;
+	c</span>onst nonceHex = <span class="cstat-no" title="statement not covered" >convert.bufferToHex(nonce);
+	c</span>onst encryptedMessage = <span class="cstat-no" title="statement not covered" >convert.bufferToHex(packet);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return {</span>
+		nonce: nonceHex,
+		encryptedMessage,
+	};
+}
+&nbsp;
+f</span>unction <span class="fstat-no" title="function not covered" >decryptMessageWithSecret(packet, nonce, secret, senderPublicKey) {
+	c</span>onst recipientPrivateKey = <span class="cstat-no" title="statement not covered" >keys.getRawPrivateAndPublicKeyFromSecret(secret).privateKey;
+	c</span>onst convertedPrivateKey = <span class="cstat-no" title="statement not covered" >convertPrivateKeyEd2Curve(recipientPrivateKey);
+	c</span>onst senderPublicKeyBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(senderPublicKey);
+	c</span>onst convertedPublicKey = <span class="cstat-no" title="statement not covered" >convertPublicKeyEd2Curve(senderPublicKeyBytes);
+	c</span>onst packetBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(packet);
+	c</span>onst nonceBytes = <span class="cstat-no" title="statement not covered" >convert.hexToBuffer(nonce);
+&nbsp;
+	c</span>onst decoded = <span class="cstat-no" title="statement not covered" >naclInstance
+		.crypto_box_open(packetBytes, nonceBytes, convertedPublicKey, convertedPrivateKey);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return naclInstance.decode_utf8(decoded);</span>
+}
+&nbsp;
+module.exports = {
+	verifyMessageWithPublicKey,
+	signMessageWithSecret,
+	printSignedMessage,
+	signAndPrintMessage,
+	encryptMessageWithSecret,
+	decryptMessageWithSecret,
+	convertPublicKeyEd2Curve,
+	convertPrivateKeyEd2Curve,
+	signMessageWithTwoSecrets,
+	verifyMessageWithTwoPublicKeys,
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Sep 02 2017 16:39:56 GMT+1000 (AEST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
